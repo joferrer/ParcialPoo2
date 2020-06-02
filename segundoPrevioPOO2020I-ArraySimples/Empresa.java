@@ -23,7 +23,7 @@ public class Empresa {
 
     public Empresa(){
         //COMPLETE
-        empleados= new Empleado[50];
+        empleados= new Empleado[10];
     }
 
     /**
@@ -221,13 +221,7 @@ public class Empresa {
     public void agregarGerente(String cedula, String nombres, String apellidos, double salarioBase, int fechaIngreso, int fechaRetiro){
         //COMPLETE
               Gerente ger = new Gerente(cedula,  nombres,  apellidos,  salarioBase, fechaIngreso, fechaRetiro);
-        for(int i=0; i<empleados.length; i++){
-        if(empleados[i] == null){
-        empleados[i] = ger;
-        break;
-        }
-        }
-        this.totalEmpleados++;
+       agregarEmpleado(ger);
     }
 
     /**
@@ -235,13 +229,7 @@ public class Empresa {
      */
     public void agregarOperario(String cedula, String nombres, String apellidos, double salarioBase, int fechaIngreso, int fechaRetiro){
          Operario oper = new Operario(cedula,  nombres,  apellidos,  salarioBase, fechaIngreso, fechaRetiro);
-        for(int i=0; i<empleados.length; i++){
-        if(empleados[i] == null){
-        empleados[i] = oper;
-        break;
-        }
-        }
-        this.totalEmpleados++;
+       agregarEmpleado(oper);
     }    
 
     /**
@@ -250,15 +238,20 @@ public class Empresa {
     public void agregarEmpleado(Empleado e){
         //COMPLETE
         //COMPLETE
-        /*
+        
         if(totalEmpleados==empleados.length){
             int i=0;
             Empleado nueva[]= new Empleado[empleados.length*2];
             for(Empleado x: empleados){
-                nueva[]=
-            
+                nueva[i]=x;
+                i++;
             }
-        }*/
+            nueva[i]=e;
+            this.setEmpleados(nueva);
+            totalEmpleados++;
+            
+        }
+        else{
         for(int i=0; i<empleados.length; i++){
         if(empleados[i] == null){
         empleados[i] = e;
@@ -267,6 +260,7 @@ public class Empresa {
         }
         }
         this.totalEmpleados++;
+    }
         
     }
 }
